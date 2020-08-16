@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Page Title</title>
+  <meta charset="UTF-8"/>
+</head>
+<body>
+  let playScore = 0;
+let compScore = 0;
+let roundCount = 0;
+
+
+   function playRound() {
+        function computerPlay(){
+        let choices = ["ROCK", "PAPER", "SCISSORS"];
+        let random = choices[Math.floor(Math.random() * choices.length)];
+        return random;
+        }
+       
+        function getPlayerChoice(){
+        let choice = prompt('Please choose Rock, Paper, or Scissors!');
+        let finalChoice = choice.toUpperCase();
+        return finalChoice;
+        }
+
+let playerSelection = getPlayerChoice();
+let computerSelection = computerPlay();
+
+      if (playerSelection === computerSelection) {
+      ++roundCount;
+     console.log(`You tied! Player score = ${playScore} and Computer score = ${compScore}, the round count is ${roundCount}`);
+    return;
+  } else if (playerSelection === 'ROCK' && computerSelection === 'PAPER'){
+        ++compScore;
+        ++roundCount;
+        console.log(`You lost, Paper covers Rock! Player score = ${playScore} and Computer score = ${compScore}, the round count is ${roundCount}`);
+        return;
+  } else if (playerSelection === 'ROCK' && computerSelection === 'SCISSORS'){
+            ++playScore;
+            ++roundCount;
+            console.log(`You won, Rock beats Scissors! Player score = ${playScore} and Computer score = ${compScore}, the round count is ${roundCount}`);
+        return;
+  } else if (playerSelection === 'PAPER' && computerSelection === 'SCISSORS'){
+                ++compScore;
+                ++roundCount;
+                console.log(`You lose, Scissors beats Paper! Player score = ${playScore} and Computer score = ${compScore}, the round count is ${roundCount}`);
+            return;
+  } else if (playerSelection === 'PAPER' && computerSelection === 'ROCK'){
+                    ++playScore;
+                    ++roundCount;
+                    console.log(`You won, Paper covers Rock! Player score = ${playScore} and Computer score = ${compScore}, the round count is ${roundCount}`);
+                return;
+  } else if (playerSelection === 'SCISSORS' && computerSelection === 'ROCK'){
+                        ++compScore;
+                        ++roundCount;
+                        console.log(`You lose, Rock beats Scissors! Player score = ${playScore} and Computer score = ${compScore}, the round count is ${roundCount}`);
+                return;
+  } else if (playerSelection === 'SCISSORS' && computerSelection === 'PAPER'){
+                            ++playScore;
+                            ++roundCount;
+                           console.log(`You win, Scissors cuts Paper! Player score = ${playScore} and Computer score = ${compScore}, the round count is ${roundCount}`);
+                return;
+  } else {
+console.log(playScore, compScore, roundCount);
+    return;
+   }  
+   }
+
+function game() {
+    alert('Lets play Rock, Paper, Scissors!');
+    while (roundCount < 5){
+    playRound();
+    }
+    if (compScore > playScore){
+      alert(`The computer won! The final scores are Computer ${compScore} Player ${playScore} and final Round Count was ${roundCount}`);
+    }
+    else if (playScore > compScore){
+      alert(`The player won! The final scores are Player ${playScore} Computer ${compScore} and final Round Count was ${roundCount}`);
+    }
+    else if (playScore === compScore){
+      alert(`It's a tie! The final scores are Player ${playScore} Computer ${compScore} and final Round Count was ${roundCount} please try again!`);
+    }
+}
+  </script>
+</body>
+</html>
