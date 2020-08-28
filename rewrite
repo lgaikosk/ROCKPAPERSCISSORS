@@ -1,0 +1,50 @@
+let playerScore = 0;
+let compScore = 0;
+let roundCount = 0;
+
+function playRound() {
+  function computerPlay(){
+   let choices = ["ROCK", "PAPER", "SCISSORS"];
+   let random = choices[Math.floor(Math.random() * choices.length)];
+    return random;
+ }
+       
+  function getPlayerChoice(){
+   let choice = prompt('Please choose Rock, Paper, or Scissors!');
+   let finalChoice = choice.toUpperCase();
+    return finalChoice;
+ }
+
+   let playerSelection = getPlayerChoice();
+   let computerSelection = computerPlay();
+
+return (playerSelection === computerSelection) ? 
+    console.log(`Wow you tied! Your score is ${playerScore} the Computers score is ${compScore} and the current round count is ${++roundCount}.`)
+:(playerSelection === "ROCK" && computerSelection === "PAPER") ? 
+    console.log(`Oh no you lost, Paper beats Rock! Your score is ${playerScore} the Computers score is ${++compScore} and the current round count is ${++roundCount}.`)
+:(playerSelection === "ROCK" && computerSelection === "SCISSORS") ?
+    console.log(`You won, Rock beats Scissors! Your score is ${++playerScore} the Computers score is ${compScore} and the current round count is ${++roundCount}.`)
+:(playerSelection === "PAPER" && computerSelection === "SCISSORS") ?
+    console.log(`You lost, Scissors cuts Paper! Your score is ${playerScore} the Computers score is ${++compScore} and the current round count is ${++roundCount}.`)
+:(playerSelection === "PAPER" && computerSelection === "ROCK") ?
+    console.log(`You won, Paper covers Rock! Your score is ${++playerScore} the Computers score is ${compScore} and the current round count is ${++roundCount}.`)
+:(playerSelection === "SCISSORS" && computerSelection === "ROCK") ?
+    console.log(`You lost, Rock crushes Scissors! Your score is ${playerScore} the Computers score is ${++compScore} and the current round count is ${++roundCount}.`)
+:(playerSelection === "SCISSORS" && computerSelection === "PAPER") ?
+    console.log(`You won, Scissors cuts Paper! Your score is ${++playerScore} the Computers score is ${compScore} and the current round count is ${++roundCount}.`)
+: console.log(`Not sure what happened, please try again! Your score is ${playerScore} the Computers score is ${compScore} and the current round count is ${roundCount}.`);
+}
+
+function game(){
+ alert(`Let's play Rock, Paper, Scissors!`);
+  while(roundCount < 5){
+ playRound();
+}
+return (compScore === playerScore) ?
+    alert(`You tied! The final scores are PLAYER - ${playerScore} COMPUTER - ${compScore}.`)
+:(compScore > playerScore) ? 
+    alert(`The Computer won! The final scores are PLAYER - ${playerScore} COMPUTER - ${compScore}.`)
+:(compScore < playerScore) ?
+    alert(`You won! The final scores are PLAYER - ${playerScore} COMPUTER - ${compScore}.`)
+:alert(`Not sure what happened, please try again!`);
+}
